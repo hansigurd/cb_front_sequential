@@ -32,7 +32,7 @@ $(document).ready(function() {
 
             typingIndicator.style.display = 'flex';
             $.ajax({
-                url: 'https://dml2220chatbot-6301f895d848.herokuapp.com/api/chat', // Ensure this is your correct Heroku URL
+                url: 'https://chatbot-cb-2a5f4f776879.herokuapp.com/api/chat', // Ensure this is your correct Heroku URL
                 type: 'post',
                 dataType: 'json',
                 contentType: 'application/json',
