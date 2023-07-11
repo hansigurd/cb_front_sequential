@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://kit.fontawesome.com/b756d1afe4.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="chat-container">
+        <div class="messages" id="messages"></div>
+        <div class="id-container">
+            <input type="text" id="user_id" class="id-input" placeholder="Tilfeldig brukerID" />
+            <align="left">
+        </div>
+          
+        <div class="input-container">
+            <input type="text" id="user_input" class="message-input" placeholder="Skriv din melding" />
+            
+            <button class="send-button" id="send">
+                <i class="fa-solid fa-paper-plane"></i>
+            </button> 
+            </div>
+          
+            <div class="typing-indicator">
+            <i class="fa-solid fa-spinner fa-spin-pulse" style="color: #00ca98;"></i>
+             <span>Tenker...</span>
+            </div>
+          
+    <script src="script.js"></script>
+</body>
+</html>
