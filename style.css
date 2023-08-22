@@ -14,7 +14,7 @@ body {
 .chat-container {
   width: 90%;
   max-width: 650px; /* 30% larger width */
-  height:"100%";
+  height:800px;
   background-color: white;
   position: relative;
   border: 1px solid #ddd;
@@ -127,6 +127,7 @@ body {
 
   .chat-container {
       width: 95%;
+      height: auto; /* Let it adapt based on content on mobile */
       min-height: 300px;
       max-height: 500px;
   }
