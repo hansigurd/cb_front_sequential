@@ -136,7 +136,6 @@ body {
 
   .chat-container {
       width: 95%;
-      height: auto; /* Let it adapt based on content on mobile */
       min-height: 500px;
       max-height: 800px;
   }
