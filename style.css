@@ -136,6 +136,7 @@ body {
 
   .chat-container {
       width: 95%;
+      height: auto;
       max-height: 500px;
   }
 
