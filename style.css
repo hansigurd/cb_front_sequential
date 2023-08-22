@@ -120,6 +120,15 @@ body {
   background-color: transparent;
   cursor: not-allowed;
 }
+
+/* Explicit height for screens larger than 768px (typically desktops) */
+@media only screen and (min-width: 769px) {
+  .chat-container {
+      height: 800px;
+  }
+}
+
+/* Adjustments for screens up to 768px (typically tablets and mobiles) */
 @media only screen and (max-width: 768px) {
   body {
       font-size: 0.9em;
