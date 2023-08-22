@@ -14,6 +14,7 @@ body {
 .chat-container {
   width: 90%;
   max-width: 650px; /* 30% larger width */
+  max-height: 800px;
   background-color: white;
   position: relative;
   border: 1px solid #ddd;
@@ -26,7 +27,7 @@ body {
 .messages {
   flex-grow: 1;
   overflow-y: auto;
-  height: 650px; /* 30% larger height */
+  max-height: 650px; /* 30% larger height */
 }
 
 .message {
@@ -126,6 +127,7 @@ body {
 
   .chat-container {
       width: 95%;
+      height: auto;
   }
 
   .id-input, .message-input {
