@@ -129,7 +129,7 @@ body {
 }
 
 /* Adjustments for screens up to 768px (typically tablets and mobiles) */
-@media only screen and (max-width: 649px) {
+@media only screen and (max-width: 648px) {
   body {
       font-size: 0.9em;
   }
@@ -137,6 +137,8 @@ body {
   .chat-container {
       width: 95%;
       height: auto; /* Let it adapt based on content on mobile */
+      min-height: 500px;
+      max-height: 800px;
   }
 
   .id-input, .message-input {
