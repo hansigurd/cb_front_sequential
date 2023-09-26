@@ -6,6 +6,7 @@ $(document).ready(function() {
     const typingIndicator = document.querySelector('.typing-indicator');
 
     sendButton.addEventListener('click', function() {
+        sendButton.disabled = true;  // Disable the send button.
         sendMessage();
     });
 
@@ -70,6 +71,9 @@ $(document).ready(function() {
                 typewriterEffect(element, words, index + 1);
                 messagesDiv.scrollTop = messagesDiv.scrollHeight; // Scroll to bottom after each word is added
             }, delay);
+        }
+        else {
+            sendButton.disabled = false;  // Enable the send button.
         }
     }
 
