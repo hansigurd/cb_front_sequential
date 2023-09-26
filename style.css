@@ -5,23 +5,22 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  height: 100%;
   margin: 0;
   background-color: #f2f2f2;
-  font-size: 1em; /* 30% larger font */
+  font-size: 1em;
 }
 
 .chat-container {
-  width: 90%;
-  max-width: 650px; /* 30% larger width */
-  height:800px;
+  width: 500px;
+  max-height: 100%;
   background-color: white;
   position: relative;
   border: 1px solid #ddd;
-  padding: 39px; /* 30% larger padding */
+  padding: 39px;
   display: flex;
   flex-direction: column;
-  gap: 13px; /* 30% larger gap */
+  gap: 13px;
 }
 
 .messages {
@@ -121,13 +120,6 @@ body {
   cursor: not-allowed;
 }
 
-/* Explicit height for screens larger than 768px (typically desktops) */
-@media only screen and (min-width: 649px) {
-  .chat-container {
-      height: 800px;
-  }
-}
-
 /* Adjustments for screens up to 768px (typically tablets and mobiles) */
 @media only screen and (max-width: 768px) {
   body {
@@ -135,9 +127,7 @@ body {
   }
 
   .chat-container {
-      width: 95%;
-      height: 500px;
-      
+      width: 100%;
   }
 
   .id-input, .message-input {
