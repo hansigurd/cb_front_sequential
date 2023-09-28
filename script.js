@@ -1,44 +1,31 @@
 $(document).ready(function() {
-    const userIdField = $('#user_id');
-    const messagesDiv = $('.messages');
-    const messageInput = $('.message-input');
-    const sendButton = $('#send');
-    const typingIndicator = $('.typing-indicator');
+    const userIdField = document.getElementById('user_id');
+    const messagesDiv = document.querySelector('.messages');
+    const messageInput = document.querySelector('.message-input');
+    const sendButton = document.getElementById('send');
+    const typingIndicator = document.querySelector('.typing-indicator');
 
-    function updateSendButtonState() {
-        if(userIdField.val().trim() && messageInput.val().trim()) {
-            sendButton.prop('disabled', false);  // Enable the send button.
-        } else {
-            sendButton.prop('disabled', true);  // Disable the send button.
-        }
-    }
-
-    updateSendButtonState();  // Update button state at page load
-
-    userIdField.on('input', updateSendButtonState);
-    messageInput.on('input', updateSendButtonState);
-
-    sendButton.on('click', function() {
+    sendButton.addEventListener('click', function() {
+        sendButton.disabled = true;  // Disable the send button.
         sendMessage();
     });
 
-    messageInput.on('keydown', function(e) {
+    messageInput.addEventListener('keydown', function(e) {
         if (e.key === 'Enter') {
             sendMessage();
         }
     });
 
     function sendMessage() {
-        const session_id = userIdField.val();
-        const userInput = messageInput.val();
+        const session_id = userIdField.value;
+        const userInput = messageInput.value;
         if (userInput.trim()) {
             const userMessage = document.createElement('div');
             userMessage.className = 'message user-message';
             userMessage.innerText = userInput;
             messagesDiv.appendChild(userMessage);
             messageInput.value = '';
-            updateSendButtonState();  // Update button state after sending message
-            
+
             if (session_id.trim() === '') {
                 alert('Error: User ID is required');
                 return;
@@ -69,11 +56,9 @@ $(document).ready(function() {
                         typewriterEffect(gptMessage, botResponseWords, 0);
                     }, 100);
                 },
-                
                 error: function(err) {
                     console.error("Error:", err);
                 }
-                
             });
         }
     }
