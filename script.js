@@ -5,6 +5,15 @@ $(document).ready(function() {
     const sendButton = document.getElementById('send');
     const typingIndicator = document.querySelector('.typing-indicator');
 
+    function updateSendButtonState() {
+        sendButton.disabled = !userIdField.value.trim() || !messageInput.value.trim();
+    }
+    
+    updateSendButtonState(); // Update button state at page load
+    
+    userIdField.addEventListener('input', updateSendButtonState);
+    messageInput.addEventListener('input', updateSendButtonState);
+
     sendButton.addEventListener('click', function() {
         sendButton.disabled = true;  // Disable the send button.
         sendMessage();
