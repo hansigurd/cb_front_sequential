@@ -29,55 +29,54 @@ $(document).ready(function() {
     });
 
     function sendMessage() {
-    const session_id = userIdField.val();
-    const userInput = messageInput.val();
-    if (userInput.trim()) {
-        const userMessage = $('<div/>', {
-            class: 'message user-message',
-            text: userInput
-        });
-        messagesDiv.append(userMessage);
-        messageInput.val('');
-        updateSendButtonState(); // Update button state after clearing input field
-        
-        if (session_id.trim() === '') {
-            alert('Error: User ID is required');
-            return;
-        }
-
-        typingIndicator.css('display', 'flex');
-        
-        $.ajax({
-            url: 'https://chatbot-cb-2a5f4f776879.herokuapp.com/api/chat', // Ensure this is your correct Heroku URL
-            type: 'post',
-            dataType: 'json',
-            contentType: 'application/json',
-            data: JSON.stringify({
-                session_id: session_id,
-                input: userInput
-            }),
-            success: function(data) {
-                let botResponse = data.bot_response;
-                botResponse = botResponse.replace(/\n/g, ' <br> ');
-                const botResponseWords = botResponse.split(' ');
-
-                setTimeout(() => {
-                    const gptMessage = $('<div/>', {
-                        class: 'message gpt-message'
-                    });
-                    messagesDiv.append(gptMessage);
-                    messagesDiv.scrollTop(messagesDiv[0].scrollHeight); // Scroll to bottom after appending message
-                    typingIndicator.css('display', 'none'); // Hide the typing indicator here
-                    
-                    typewriterEffect(gptMessage, botResponseWords, 0);
-                }, 100);
-            },
-            error: function(err) {
-                console.error("Error:", err);
+        const session_id = userIdField.val();
+        const userInput = messageInput.val();
+        if (userInput.trim()) {
+            const userMessage = document.createElement('div');
+            userMessage.className = 'message user-message';
+            userMessage.innerText = userInput;
+            messagesDiv.appendChild(userMessage);
+            messageInput.value = '';
+            updateSendButtonState();  // Update button state after sending message
+            
+            if (session_id.trim() === '') {
+                alert('Error: User ID is required');
+                return;
             }
-        });
+
+            typingIndicator.style.display = 'flex';
+            $.ajax({
+                url: 'https://chatbot-cb-2a5f4f776879.herokuapp.com/api/chat', // Ensure this is your correct Heroku URL
+                type: 'post',
+                dataType: 'json',
+                contentType: 'application/json',
+                data: JSON.stringify({
+                    session_id: session_id,
+                    input: userInput
+                }),
+                success: function(data) {
+                    let botResponse = data.bot_response;
+                    botResponse = botResponse.replace(/\n/g, ' <br> ');
+                    const botResponseWords = botResponse.split(' ');
+
+                    setTimeout(() => {
+                        const gptMessage = document.createElement('div');
+                        gptMessage.className = 'message gpt-message';
+                        messagesDiv.appendChild(gptMessage);                   
+                        messagesDiv.scrollTop = messagesDiv.scrollHeight;
+                        typingIndicator.style.display = 'none'; // Hide the typing indicator here
+
+                        typewriterEffect(gptMessage, botResponseWords, 0);
+                    }, 100);
+                },
+                
+                error: function(err) {
+                    console.error("Error:", err);
+                }
+                
+            });
+        }
     }
-}
 
     function typewriterEffect(element, words, index) {
         if (index < words.length) {
