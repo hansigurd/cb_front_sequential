@@ -5,7 +5,6 @@ $(document).ready(function() {
     const sendButton = $('#send');
     const typingIndicator = $('.typing-indicator');
 
-    // Update the state of the send button
     function updateSendButtonState() {
         if(userIdField.val().trim() && messageInput.val().trim()) {
             sendButton.prop('disabled', false);  // Enable the send button.
@@ -14,13 +13,15 @@ $(document).ready(function() {
         }
     }
 
-    // Run this when the document is ready
     updateSendButtonState();  // Update button state at page load
 
-    // Event listeners for user input and send button
     userIdField.on('input', updateSendButtonState);
     messageInput.on('input', updateSendButtonState);
-    sendButton.on('click', sendMessage);
+
+    sendButton.on('click', function() {
+        sendMessage();
+    });
+
     messageInput.on('keydown', function(e) {
         if (e.key === 'Enter') {
             sendMessage();
@@ -76,7 +77,7 @@ $(document).ready(function() {
             }
         });
     }
-    }
+}
 
     function typewriterEffect(element, words, index) {
         if (index < words.length) {
